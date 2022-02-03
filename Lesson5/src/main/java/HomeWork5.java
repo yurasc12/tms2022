@@ -4,13 +4,20 @@ import java.util.Scanner;
 
 public class HomeWork5 {
     public static void main(String[] args) {
-        System.out.println(summ(15, 2));
+        System.out.println(summ(-5, 7));
+        System.out.println(summ(-5, -5));
+        System.out.println(summ(-2, 10));
+        System.out.println(summ(0, 2));
+        System.out.println(summ(5, 5));
+
         outElrmentsArrayTriangle();
         outoddnumber();
         outElementsArray();
         outArray();
         maxElementChang(new int[]{4, 5, 0, 23, 77, 0, 8, 9, 101, 2});
-        checkArray(new int[]{4, 5, 0, 23, 77, 0, 8, 5, 77, 2});
+        checkArray(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
+        checkArray(new int[]{1, 2, 1, 1, 5, 6, 5, 5, 9, 10});
+
         calculateSumOfDiagonalElements();
         outNewArray();
         printMatrix();
@@ -21,8 +28,22 @@ public class HomeWork5 {
     // умножение через сумму
     private static int summ(int a, int b) {
         int result = 0;
+        boolean znak = false;
+        if (a == 0 || b == 0) {
+            return 0;
+        } else {
+
+            if ((a < 0 && b > 0) || (a > 0 && b < 0)) {
+                znak = true;
+            }
+            a = Math.abs(a);
+            b = Math.abs(b);
+        }
         for (int i = 0; i < b; i++) {
             result = result + a;
+        }
+        if (znak) {
+            result = result * -1;
         }
         return result;
 
@@ -172,12 +193,12 @@ public class HomeWork5 {
     private static void outArray() {
         int[] mas = new int[20];
         Random rnd = new Random();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < mas.length; i++) {
             mas[i] = rnd.nextInt(20 + 1);
         }
         System.out.println(Arrays.toString(mas));
 
-        for (int i = 0; i < 20; i += 2) {
+        for (int i = 0; i < mas.length; i += 2) {
             mas[i] = 0;
         }
         System.out.println(Arrays.toString(mas));
@@ -207,19 +228,49 @@ public class HomeWork5 {
 
     //повторяющиеся элементы
     private static void checkArray(int[] myArr) {
+
         if (myArr != null) {
-            //  int[] mayArr1 = Arrays.copyOf(myArr, myArr.length);
+            int[] newarray = new int[myArr.length];
+            int position = -1;
             int elem = 0;
             for (int i = 0; i < myArr.length; i++) {
                 elem = myArr[i];
                 for (int j = i + 1; j < myArr.length; j++) {
                     if (elem == myArr[j]) {
-                        System.out.println("повторяющися элемент " + elem);
+                        if (position == -1) {
+                            newarray[0] = elem;
+                            position = 1;
+                        } else {
+                            // поищем элемент массива
+                            if (linearSearch(newarray, elem, position) == -1) {
+                                newarray[position] = elem;
+                                position++;
+                            }
+                        }
+
                     }
                 }
             }
-
+            // вывод повторяющихся элементов
+            if (position == -1) {
+                System.out.println("повторяющихся элементов нет ");
+            } else {
+                System.out.print("повторяющиеся элементы : ");
+                for (int i = 0; i < position; i++) {
+                    System.out.print(newarray[i] + ",");
+                }
+                System.out.println();
+            }
         }
+    }
+
+    public static int linearSearch(int[] array, int elementToSearch, int pos) {
+        for (int i = 0; i < pos; i++) {
+            if (array[i] == elementToSearch) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     // сумма элементов по диагонали.
@@ -267,6 +318,7 @@ public class HomeWork5 {
                     break;
                 } else {
                     System.out.println("Введите правильный размер:");
+                    scanner.next();
                 }
             }
         }
@@ -367,16 +419,16 @@ public class HomeWork5 {
         int summa = Integer.MIN_VALUE;
         int numberIndexX = 0;
         int numberIndexY = 0;
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                if (j + 2 < 10) {
-                    if (summa < mas[i][j] + mas[i][j + 1] + mas[i][j + 2]) {
-                        summa = mas[i][j] + mas[i][j + 1] + mas[i][j + 2];
-                        numberIndexX = i;
-                        numberIndexY = j;
-                    }
-
+        for (int i = 0; i < mas.length; i++) {
+            for (int j = 0; j + 2 < mas.length; j++) {
+                //if (j + 2 < 10) {
+                if (summa < mas[i][j] + mas[i][j + 1] + mas[i][j + 2]) {
+                    summa = mas[i][j] + mas[i][j + 1] + mas[i][j + 2];
+                    numberIndexX = i;
+                    numberIndexY = j;
                 }
+
+                //  }
 
             }
 
