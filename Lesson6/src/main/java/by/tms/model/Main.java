@@ -8,12 +8,12 @@ public class Main {
         computer.setHdd(500);
         computer.setResurs(10);
 
-        computer.outSpecifications();
+        computer.printSpecifications();
         while (true) {
-            if (computer.onComputer()) {
+            computer.onComputer();
+            if (computer.isBurned()) {
                 break;
             }
-
             computer.offComputer();
         }
 

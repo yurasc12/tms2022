@@ -35,20 +35,23 @@ public class User {
 
     }
 
-    public void incrementAge(int cage) {
-        age = age + cage;
-    }
-
-    public String returnNameSurname() {
-        return name + " " + surname;
-    }
-
     public User(int age) {
         this.age = age;
     }
 
     public User() {
     }
+
+    // изменил метод использовал переменную age
+    public void incrementAge(int age) {
+        this.age += age;
+    }
+
+    // переимеовал метод
+    public String getNameSurname() {
+        return name + " " + surname;
+    }
+
 
     public void setName(String name) {
         this.name = name;
