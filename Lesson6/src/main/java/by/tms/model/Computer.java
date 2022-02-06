@@ -29,45 +29,43 @@ public class Computer {
     private String processor;
     private int ram;
     private int hdd;
-    private int resurs;
+    private int resourceCycles;
     private Scanner scanner = new Scanner(System.in);
-    private boolean status;
+    private Random random = new Random();
+    private boolean burned;
 
-    public Computer(String processor, int ram, int hdd, int resurs) {
+    public Computer(String processor, int ram, int hdd, int resourceCycles) {
         this.processor = processor;
         this.ram = ram;
         this.hdd = hdd;
-        this.resurs = resurs;
+        this.resourceCycles = resourceCycles;
     }
 
     public Computer() {
     }
 
-    public void outSpecifications() {
-        System.out.println("Характеристики компьютера");
+    //изменил название метода
+    public void printSpecifications() {
         System.out.println("Модель процессора : " + processor);
         System.out.println("Объем оперативной памяти : " + ram);
         System.out.println("Объем винчестера : " + hdd);
-        System.out.println("Рабочий рессурс : " + resurs);
+        System.out.println("Рабочий рессурс : " + resourceCycles);
 
     }
 
-    public boolean onComputer() {
-        int button = selectButton();
-
-        Random random = new Random();
-        int rnd = random.nextInt(1) + 1;
-        if (rnd == button && !status) {
+    // изменил метод
+    public void onComputer() {
+        if (checkAction() && !burned) {
             System.out.println("Компьютер включен !");
         } else {
             System.out.println("Компьютер сгорел !!!!");
-            status = true;
+            burned = true;
         }
-        return status;
+
     }
 
-
-    private int selectButton() {
+    // изменил метод
+    private boolean checkAction() {
         int key = 0;
         do {
             System.out.println("Внимание! Введите 0 или 1");
@@ -77,22 +75,27 @@ public class Computer {
                 scanner.next();
             }
         } while (!(key == 0 || key == 1));
-        return key;
+
+        int rnd = random.nextInt(1) + 1;
+        if (rnd == key) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     public void offComputer() {
-        if (status) {
+        if (burned) {
             System.out.println("Компьютер сгорел !!!!");
         } else {
-            resurs--;
-            if (resurs == 0) {
-                status = true;
-                System.out.println("Компьютер сгорел !!!!");
-            } else {
+            if (resourceCycles != 0) {
+                resourceCycles--;
                 System.out.println("Выключение компьютера !!!!");
+            } else {
+                burned = true;
             }
         }
-
     }
 
 
@@ -121,12 +124,14 @@ public class Computer {
     }
 
     public int getResurs() {
-        return resurs;
+        return resourceCycles;
     }
 
-    public void setResurs(int resurs) {
-        this.resurs = resurs;
+    public void setResurs(int resourceCycles) {
+        this.resourceCycles = resourceCycles;
     }
 
-
+    public boolean isBurned() {
+        return burned;
+    }
 }
