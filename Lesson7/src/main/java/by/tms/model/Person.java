@@ -1,7 +1,7 @@
 package by.tms.model;
 
 /**
- *
+ * класс описывает человека
  */
 public class Person {
 
@@ -64,12 +64,12 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", gender='" + gender + '\'' +
-                ", age=" + age +
-                ", address=" + address +
-                '}';
+        return "Person " +
+                "name= " + name + '\n' +
+                "surname= " + surname + '\n' +
+                "gender=" + gender + '\n' +
+                "age=" + age + '\n' +
+                "address=" + address;
+
     }
 }

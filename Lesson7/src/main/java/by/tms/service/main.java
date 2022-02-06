@@ -19,7 +19,8 @@ public class main {
     public static void main(String[] args) {
 
         int number = 1;
-        int key = 1;
+        int key = 1; //выход из цикла ввода
+
         do {
             System.out.println("Введите данные по человеку № " + number);
 
@@ -43,6 +44,7 @@ public class main {
             }
             Address address = new Address(country, city, house, room);
             Person person = new Person(name, surName, gender, age, address);
+            System.out.println(person.toString());
             citizens.add(person);
             number++;
             key = getValueSex(" Сделайте выбор (0 - Выход 1- Продолжить) ");
@@ -51,6 +53,7 @@ public class main {
         //Person[] citizensArray = citizens.toArray(new Person[0]); //объявляем массив объектов и присваеваем ему список
 
         // PersonRegistry personRegistry = new PersonRegistry(citizensArray);
+
         PersonRegistry personRegistry = new PersonRegistry(citizens);
 
         MilitaryOffice militaryOffice = new MilitaryOffice(personRegistry);

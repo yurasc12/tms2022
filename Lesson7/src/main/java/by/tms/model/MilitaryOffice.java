@@ -14,6 +14,7 @@ public class MilitaryOffice {
     // считает призывников с именем
     public int countRecruitByName(String name) {
         int countRecruit = 0;
+
         if (name != null) {
 
           /*  for (int i = 0; i < personRegistry.citizens.length; i++) {
@@ -39,6 +40,7 @@ public class MilitaryOffice {
         for (int i = 0; i < personRegistry.personRegistryList.size(); i++) {
             // Person person = personRegistry.citizens[i]; // один человек из регистратуры
             Person person = personRegistry.personRegistryList.get(i);
+
             if (person.getAge() >= MIN_AGE && person.getAge() <= MAX_AGE && person.getGender().toLowerCase().equals(MALE)) {
                 objects.add(person);
             }

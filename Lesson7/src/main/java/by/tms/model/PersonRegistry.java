@@ -24,7 +24,7 @@ public class PersonRegistry {
 
     @Override
     public String toString() {
-        return "PersonRegistry{" +
+        return "PersonRegistry {" +
                 "personRegistryList=" + personRegistryList +
                 '}';
     }
