@@ -13,8 +13,8 @@ import static by.tms.utils.Constans.FMALE;
 import static by.tms.utils.Constans.MALE;
 
 public class main {
-    static Scanner scanner = new Scanner(System.in);
-    static ArrayList<Person> citizens = new ArrayList<>();
+    private static Scanner scanner = new Scanner(System.in);
+    private static ArrayList<Person> citizens = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -58,9 +58,9 @@ public class main {
 
         MilitaryOffice militaryOffice = new MilitaryOffice(personRegistry);
 
-        System.out.println("Количество призывников с именем Александр: " + militaryOffice.countRecruitByName("Александр"));
+        System.out.println("Количество призывников с именем Александр: " + militaryOffice.getRecruitsName("Александр"));
 
-        AbstractList<Person> byRecruit = militaryOffice.findByRecruit();
+        AbstractList<Person> byRecruit = militaryOffice.getRecruits();
         if (!byRecruit.isEmpty()) {
             System.out.println(" Имена подлежащих призыву: ");
             for (int i = 0; i < byRecruit.size(); i++) {
@@ -68,14 +68,15 @@ public class main {
             }
         }
 
-        System.out.println("Количество призывников  в городе Минск: " + militaryOffice.countRecruitByCity("Минск"));
+        System.out.println("Количество призывников  в городе Минск: " + militaryOffice.getRecruitsByCity("Минск"));
         int ageMin = 25;
         int ageMax = 27;
-        System.out.println("Количество призывников  в возрасте с - " + ageMin + " по " + ageMax + " равно :" + militaryOffice.countRecruitByAge(25, 27));
+        System.out.println("Количество призывников  в возрасте с - " + ageMin + " по " + ageMax + " равно :" + militaryOffice.getRecruitsByAge(25, 27));
 
+        //Car car = new Car();
     }
 
-    public static String getValueString(String nameValue) {
+    private static String getValueString(String nameValue) {
         String value = "";
         do {
             System.out.print(nameValue + ":");
@@ -89,7 +90,7 @@ public class main {
         return value;
     }
 
-    public static int getValueInt(String nameValue) {
+    private static int getValueInt(String nameValue) {
         int value = 0;
         do {
             System.out.print(nameValue + ":");
@@ -103,7 +104,7 @@ public class main {
         return value;
     }
 
-    public static int getValueSex(String nameValue) {
+    private static int getValueSex(String nameValue) {
         int value = 0;
         do {
             System.out.print(nameValue + ":");
