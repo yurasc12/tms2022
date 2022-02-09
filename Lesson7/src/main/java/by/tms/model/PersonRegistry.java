@@ -4,7 +4,7 @@ import java.util.List;
 
 public class PersonRegistry {
     //Person[] citizens; //массив c объектами граждан
-    List<Person> personRegistryList;//= new ArrayList<>();
+    private List<Person> personRegistryList;//= new ArrayList<>();
     //public PersonRegistry(Person[] citizens) {
     //    this.citizens = citizens;
     //  }
@@ -14,7 +14,10 @@ public class PersonRegistry {
         this.personRegistryList = personRegistryList;
     }
 
-   /* @Override
+    public List<Person> getPersonRegistryList() {
+        return personRegistryList;
+    }
+/* @Override
     public String toString() {
         return "PersonRegistry{" +
                 "citizens=" + Arrays.toString(citizens) +
