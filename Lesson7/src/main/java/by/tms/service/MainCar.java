@@ -8,11 +8,12 @@ public class MainCar {
 
         // заправим машину
         car.fillCar();
-        if (car.startCar()) {
-            car.goCar();
-            car.stopCar();
+        //  if (car.startCar()) {
+        car.startCar();
+        car.goCar();
+        car.stopCar();
 
-        }
+        //}
 
     }
 

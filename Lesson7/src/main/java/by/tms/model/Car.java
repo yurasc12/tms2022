@@ -1,9 +1,6 @@
 package by.tms.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import static by.tms.utils.Constans.DRIVING_DISTANCE;
 import static by.tms.utils.Constans.FUEL_QUANTITY;
@@ -38,16 +35,16 @@ public class Car {
     private Engine engine;
     private boolean carStarted;
     private boolean carDriving;
-    private String typeEngin;
-    private String powerEngin;
+    private String typeEngine;
+    private String powerEngine;
     private FuelTank fuelTank;
 
     public Car(String model, int yearModel, int distance, String typeEngin, String powerEngin, int fuelTankVolume, int fuelQuantity) {
         this.model = model;
         this.yearModel = yearModel;
         this.distance = distance;
-        this.typeEngin = typeEngin;
-        this.powerEngin = powerEngin;
+        this.typeEngine = typeEngin;
+        this.powerEngine = powerEngin;
         this.engine = new Engine(typeEngin, powerEngin);
         this.fuelTank = new FuelTank(fuelTankVolume, fuelQuantity);
     }
@@ -58,8 +55,8 @@ public class Car {
             System.out.println("Машина завелась");
             carStarted = true;
         } else {
-            System.out.println("Машина не завелась");
             carStarted = false;
+            System.out.println("Машина не завелась");
         }
         return carStarted;
     }
@@ -104,32 +101,31 @@ public class Car {
     @Getter
     @Setter
     @AllArgsConstructor
-    private class Engine {
+    // добавил final
+    private final class Engine {
         private String typeEngin;
         private String powerEngin;
 
         // метод запуска двигателя
         private boolean startEngine() {
             int fuelQuantity = fuelTank.getFuelQuantity();
-            if (fuelQuantity > 0) {
-                return true;
+          /*  if (fuelQuantity > 0) {
+                //return true;
             } else {
-                return false;
-            }
-
+                //return false;
+            }*/
+            return fuelQuantity > 0;
         }
     }
 
     @Getter
     @Setter
     @AllArgsConstructor
+    @NoArgsConstructor
     @ToString
     public static class FuelTank {
         private int fuelTankVolume;
         private int fuelQuantity; // текущее количество топлива
-
-        public FuelTank() {
-        }
 
 
         //вернуть количество топлива в баке
