@@ -30,10 +30,9 @@ import static com.utils.Constants.*;
  * Ps: если знаем другие конструкции, отличные от массива, то можно использовать.
  */
 public class Main {
-    public static int countFlower = 0;
 
     public static void main(String[] args) {
-        //int countFlowerSecondOption = 0;//второй вариант
+
         FlowerMarket flowerMarket = new FlowerMarket();
 
         Bouquet bouquet = flowerMarket.getBouquet(FLOWER_ROSE, FLOWER_ROSE, FLOWER_ROSE, FLOWER_ROSE, FLOWER_ROSE);
@@ -52,9 +51,10 @@ public class Main {
 
         Bouquet bouquet4 = flowerMarket.getBouquet(FLOWER_TULIP, FLOWER_CARNATION, FLOWER_CARNATION);
         bouquet4.info();
-        System.out.println("Всего продали цветов : " + countFlower);
 
-        //System.out.println("Всего продали цветов : " + countFlowerSecondOption);
+        //getCountOfSoldFlowers - переменная пренадлижит классу а не его экземпляру
+        // static работает только со статиком
+        System.out.println("Всего продали цветов : " + FlowerMarket.getGetCountOfSoldFlowers());
 
 
     }

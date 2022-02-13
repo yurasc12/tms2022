@@ -1,5 +1,6 @@
 package com.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -7,12 +8,10 @@ import lombok.ToString;
 @ToString
 @Setter
 @Getter
+@AllArgsConstructor
 public class Flower {
-    private String flowerName;
-    private int flowerprice;
+    private String name;
+    private int price;
 
-    public Flower(String flowerName, int floerprice) {
-        this.flowerName = flowerName;
-        this.flowerprice = floerprice;
-    }
+
 }
