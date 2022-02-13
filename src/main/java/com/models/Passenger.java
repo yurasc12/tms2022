@@ -22,7 +22,6 @@ public class Passenger extends Ground {
         this.numberPassengers = numberPassengers;
     }*/
 
-
     // расчет количества топлива  и пройденной дистанции за время
     public void printCountFuelDistance(double time) {
         if (time > 0) {

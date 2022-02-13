@@ -31,13 +31,6 @@ public class Civil extends Air {
     }
 
 
-  /*  @Override
-    public void info() {
-        super.info();
-        System.out.println("количество пассажиров: " + getNumberPassengers() + " чел.\n" +
-                "наличие бизнес класса: " + (isBusinessClass() ? "есть" : "нет") + "\n");
-    }*/
-
     @Override
     public void Info() {
         super.Info();

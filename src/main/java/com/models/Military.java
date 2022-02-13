@@ -11,12 +11,12 @@ public class Military extends Air {
     private boolean ejectionSystem;
     public int numberRocket;
 
-  /*  public Military(String model, int power, int maxSpeed, int weight, int wingspan, int runwayLength, boolean ejectionSystem, int numberRocket) {
-        super(model, power, maxSpeed, weight, wingspan, runwayLength);
-        this.ejectionSystem = ejectionSystem;
-        this.numberRocket = numberRocket;
-    }*/
-
+    /*  public Military(String model, int power, int maxSpeed, int weight, int wingspan, int runwayLength, boolean ejectionSystem, int numberRocket) {
+          super(model, power, maxSpeed, weight, wingspan, runwayLength);
+          this.ejectionSystem = ejectionSystem;
+          this.numberRocket = numberRocket;
+      }*/
+// метод проверяет можно ли сделать выстрел
     public void getShot() {
         if (numberRocket > 0) {
             System.out.println("Ракета пошла");

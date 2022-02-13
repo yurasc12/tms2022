@@ -21,7 +21,6 @@ public class Ground extends Transport {
          this.fuelConsumption = fuelConsumption;
      }*/
 
-
     @Override
     public void Info() {
         super.Info();

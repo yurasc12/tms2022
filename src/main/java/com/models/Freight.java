@@ -19,7 +19,7 @@ public class Freight extends Ground {
         this.loadСapacity = loadСapacity;
     }*/
 
-
+// метод проверяет загрузку грузовика
     public void checkLoadCargo(int capacity) {
         if (capacity <= getLoadСapacity() && capacity > 0) {
             System.out.println("Грузовик загружен");

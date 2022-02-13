@@ -28,6 +28,7 @@ public abstract class Transport {
                  this.numberWheels = numberWheels;
                  this.fuelConsumption = fuelConsumption;
              }*/
+
     public double getPowerKv() {
         return 0.74 * getPower();
     }
