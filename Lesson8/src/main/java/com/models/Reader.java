@@ -36,7 +36,7 @@ public class Reader {
     private int day;
     private GregorianCalendar calendar = new GregorianCalendar(year, month, day);*/
     private String dateBirth;
-    private String telefon;
+    private String phoneNumber;
 
     public void takeBook(int numberBooks) {
         System.out.println(fullName + " взял " + numberBooks + " книги");
@@ -58,7 +58,7 @@ public class Reader {
         if (books.length > 0) {
 
             for (Book book : books) {
-                result = result + book.getNameBook() + ",";
+                result = result + book.getName() + ",";
             }
         }
         System.out.println(result.substring(0, result.length() - 1));
@@ -84,7 +84,7 @@ public class Reader {
         if (books.length > 0) {
 
             for (Book book : books) {
-                result = result + book.getNameBook() + ",";
+                result = result + book.getName() + ",";
             }
         }
         System.out.println(result.substring(0, result.length() - 1));
