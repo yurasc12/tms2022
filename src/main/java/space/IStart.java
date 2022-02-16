@@ -1,6 +1,7 @@
 package space;
 
 public interface IStart {
+
     boolean cheсkSystems();
 
     void startEngine();

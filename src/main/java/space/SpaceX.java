@@ -12,13 +12,11 @@ public class SpaceX implements IStart {
         } else {
             return true;
         }
-
     }
 
     @Override
     public void startEngine() {
         System.out.println("Двигатели SpaceX запущены !!!\n Все системы в норме");
-
     }
 
     @Override

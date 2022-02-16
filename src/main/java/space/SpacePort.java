@@ -2,6 +2,7 @@ package space;
 
 public class SpacePort {
     void Launch(IStart object) {
+
         if (!object.cheсkSystems()) {
             System.out.println("Предстартовая проверка провалена !!!");
         } else {

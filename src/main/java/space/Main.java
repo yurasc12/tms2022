@@ -4,7 +4,6 @@ public class Main {
     public static void main(String[] args) {
         SpacePort spacePort = new SpacePort();
 
-
         IStart[] iStarts;
         iStarts = new IStart[2];
         iStarts[0] = new Shuttle();
