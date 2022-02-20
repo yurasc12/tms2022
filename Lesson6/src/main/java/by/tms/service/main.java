@@ -7,10 +7,10 @@ public class main {
         Computer computer = new Computer();
         computer.setProcessor("Intel Core 7");
         computer.setRam(8);
-        computer.outSpecifications();
+        computer.printSpecifications();
 
         Computer computer1 = new Computer("AMD", 16, 1000, 10);
-        computer1.outSpecifications();
+        computer1.printSpecifications();
         computer1.onComputer();
         computer1.offComputer();
     }
