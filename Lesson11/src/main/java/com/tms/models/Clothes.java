@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 /**
  * Создать абстрактный класс Одежда, содержащий переменные - размер одежды, стоимость, цвет.
  */
+
 @Getter
 public abstract class Clothes {
     private int size;

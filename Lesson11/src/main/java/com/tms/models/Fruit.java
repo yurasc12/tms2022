@@ -15,9 +15,22 @@ import java.math.BigDecimal;
 @Getter
 @AllArgsConstructor
 public abstract class Fruit {
+    private FruitType type;
     private double weight;
+    private BigDecimal basePrice;
 
-    public abstract BigDecimal getPrice();
+    public BigDecimal getPrice() {
+        double margin;
+
+        if (getWeight() <= type.getRangeFrom()) {
+            margin = 1;
+        } else if (getWeight() > type.getRangeFrom() && getWeight() <= type.getRangeTo()) {
+            margin = 1.5;
+        } else {
+            margin = 1.7;
+        }
+        return basePrice.multiply(BigDecimal.valueOf(margin)).setScale(2);
+    }
 
     public final void printManufacturerInfo() {
         System.out.print("Made in Belarus");

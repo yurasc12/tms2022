@@ -15,9 +15,8 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public abstract class Figure {
-    public enum NameFigure {TRIANGLE, RECTANGLE, LINE}
+    private Type name;
 
-    NameFigure name;
-
+    public enum Type {TRIANGLE, RECTANGLE, LINE}
 
 }

@@ -5,8 +5,5 @@ public interface Instrument {
 
     void play();
 
-    enum Type {
-        GUITAR, DRUM, TRUMPET
-
-    }
+    enum Type {GUITAR, DRUM, TRUMPET}
 }

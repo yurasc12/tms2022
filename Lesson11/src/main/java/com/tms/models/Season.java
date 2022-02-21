@@ -15,9 +15,9 @@ public enum Season {
     AUTUMN("ОСЕНЬ", 15, "Пасмурно, дождливо");
 
 
-    String name;
-    Double temperature;
-    String content;
+    private String name;
+    private Double temperature;
+    private String content;
 
     Season(String name, double temperature, String content) {
         this.name = name;

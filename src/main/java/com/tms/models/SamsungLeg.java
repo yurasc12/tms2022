@@ -11,7 +11,6 @@ public class SamsungLeg implements ILeg {
     }
 
     @Override
-
     public void step() {
         System.out.println("Нога Samsung делает шаг");
     }

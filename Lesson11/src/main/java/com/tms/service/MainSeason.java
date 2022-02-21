@@ -10,7 +10,7 @@ public class MainSeason {
         System.out.println(season);
         System.out.println();
 
-        printSeason(season);
+        System.out.println(printSeason(season));
         System.out.println();
         for (Season season1 : Season.values()) {
             System.out.println(season1.getName() + " Средняя температура : " + season1.getTemperature() + " " + season1.getContent());
@@ -18,20 +18,22 @@ public class MainSeason {
         }
     }
 
-    public static void printSeason(Season season) {
+    public static String printSeason(Season season) {
+        String result = "Я люблю ";
         switch (season) {
             case WINTER -> {
-                System.out.println("Я люблю Зиму");
+                result += "Зиму";
             }
             case SPRING -> {
-                System.out.println("Я люблю Весну");
+                result += "Весну";
             }
             case SUMMER -> {
-                System.out.println("Я люблю Лето");
+                result += "Лето";
             }
             case AUTUMN -> {
-                System.out.println("Я люблю Осень");
+                result += "Осень";
             }
         }
+        return result;
     }
 }

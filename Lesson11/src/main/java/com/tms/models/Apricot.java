@@ -6,14 +6,10 @@ import java.math.BigDecimal;
  * Метод должен учитывать вес фрукта(Т.е в зависимости от веса разная цена)
  */
 public class Apricot extends Fruit {
-    private BigDecimal basePrice;
-
-    public Apricot(double weight, BigDecimal basePrice) {
-        super(weight);
-        this.basePrice = basePrice;
+    public Apricot(FruitType type, double weight, BigDecimal basePrice) {
+        super(type, weight, basePrice);
     }
-
-    @Override
+/*    @Override
     public BigDecimal getPrice() {
         double margin;
 
@@ -25,6 +21,6 @@ public class Apricot extends Fruit {
             margin = 1.8;
         }
         return basePrice.multiply(BigDecimal.valueOf(margin)).setScale(2);
-    }
+    }*/
 }
 

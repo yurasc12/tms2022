@@ -12,14 +12,16 @@ public class Tshirt extends Clothes implements MensClothing, WomensClothing {
     }
 
     @Override
-    public void dressAMen() {
+    public MensClothing dressMen() {
         System.out.println("На вас надета футболка. Стоимость футболки: " + getPrice() + " Размер: " +
                 getSize() + " Цвет футболки: " + getColor());
+        return null;
     }
 
     @Override
-    public void dressAWoman() {
+    public WomensClothing dressWoman() {
         System.out.println("На вас надета футболка. Стоимость футболки: " + getPrice() + " Размер: " +
                 getSize() + " Цвет футболки: " + getColor());
+        return null;
     }
 }
