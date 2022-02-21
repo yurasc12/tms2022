@@ -1,11 +1,10 @@
 package com.tms.service;
 
-import com.tms.models.Figure;
-import com.tms.models.Line;
-import com.tms.models.Rectangle;
-import com.tms.models.Triangle;
+import com.tms.models.*;
 
-import static com.tms.models.Figure.NameFigure.*;
+import static com.tms.models.Figure.Type.*;
+
+//import static com.tms.models.Figure.NameFigure.*;
 
 /**
  * Задача5*(звездочка)
@@ -24,7 +23,7 @@ public class MainSquare {
         figures[2] = new Line(LINE, 10);
 
         for (Figure figure : figures) {
-            if (figure.getName() == RECTANGLE) {
+           /* if (figure.getName() == RECTANGLE) {
                 Rectangle figure1 = (Rectangle) figure;
                 System.out.println("Площадь прямоугольника: " + figure1.getSquare());
             } else if (figure.getName() == TRIANGLE) {
@@ -32,6 +31,12 @@ public class MainSquare {
                 System.out.println("Площадь треугольника: " + figure1.getSquare());
             } else {
                 System.out.println("У линии площадь не вычисляется!!!");
+            }*/
+            if (figure.getName().equals(LINE)) {
+                System.out.println("У линии площадь не вычисляется!!!");
+            } else {
+                ISquare figure1 = (ISquare) figure;
+                System.out.println("Площадь равна: " + figure1.getSquare());
             }
         }
 

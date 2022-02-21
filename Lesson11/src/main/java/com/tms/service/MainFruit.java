@@ -9,6 +9,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static com.tms.models.FruitType.*;
+
 /**
  * Подсчитать общую стоимость проданных фруктов.
  * А также общую стоимость отдельно проданных яблок, груш и абрикос.
@@ -32,11 +34,11 @@ public class MainFruit {
         BigDecimal basePriceApricot = new BigDecimal(25);
 
         for (int i = 0; i < 10; i++) {
-            Apple apple = new Apple(generateWeight(toWeightApple, fromWeightApple), basePriceApple);
+            Apple apple = new Apple(APPLE, generateWeight(toWeightApple, fromWeightApple), basePriceApple);
             fruits.add(apple);
-            Pear pear = new Pear(generateWeight(toWeightPear, fromWeightPear), basePricePear);
+            Pear pear = new Pear(PEAR, generateWeight(toWeightPear, fromWeightPear), basePricePear);
             fruits.add(pear);
-            Apricot apricot = new Apricot(generateWeight(toWeightApricot, fromWeightApricot), basePriceApricot);
+            Apricot apricot = new Apricot(APRICOT, generateWeight(toWeightApricot, fromWeightApricot), basePriceApricot);
             fruits.add(apricot);
         }
         getFruitCost(fruits);

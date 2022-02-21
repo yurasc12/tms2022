@@ -14,9 +14,9 @@ public class Studio {
         this.clothes = clothes;
     }*/
 
-    public void dressedAWomen(ArrayList clothes) {
+    public void dressedWomen(ArrayList clothes) {
         for (Object clothe : clothes) {
-            if (clothe instanceof Tshirt) {
+           /* if (clothe instanceof Tshirt) {
                 Tshirt clothe1 = (Tshirt) clothe;
                 System.out.println("Футболка : размер " + clothe1.getSize() + ", стоимость " + clothe1.getPrice() + ", цвет " + clothe1.getColor());
             } else if (clothe instanceof Pants) {
@@ -25,13 +25,16 @@ public class Studio {
             } else if (clothe instanceof Skirt) {
                 Skirt clothe1 = (Skirt) clothe;
                 System.out.println("Юбка : размер " + clothe1.getSize() + ", стоимость " + clothe1.getPrice() + ", цвет " + clothe1.getColor());
+            }*/
+            if (clothe instanceof WomensClothing) {
+                WomensClothing womensClothing = ((WomensClothing) clothe).dressWoman();
             }
         }
     }
 
-    public void dressedAMen(ArrayList clothes) {
+    public void dressedMen(ArrayList clothes) {
         for (Object clothe : clothes) {
-            if (clothe instanceof Tshirt) {
+            /*if (clothe instanceof Tshirt) {
                 Tshirt clothe1 = (Tshirt) clothe;
                 System.out.println("Футболка : размер " + clothe1.getSize() + ", стоимость " + clothe1.getPrice() + ", цвет " + clothe1.getColor());
             } else if (clothe instanceof Pants) {
@@ -40,7 +43,11 @@ public class Studio {
             } else if (clothe instanceof Tie) {
                 Tie clothe1 = (Tie) clothe;
                 System.out.println("Галстук : размер " + clothe1.getSize() + ", стоимость " + clothe1.getPrice() + ", цвет " + clothe1.getColor());
+            }*/
+            if (clothe instanceof MensClothing) {
+                MensClothing mensClothing = ((MensClothing) clothe).dressMen();
             }
         }
+
     }
 }

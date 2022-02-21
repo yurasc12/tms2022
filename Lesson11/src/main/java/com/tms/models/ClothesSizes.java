@@ -24,7 +24,7 @@ public enum ClothesSizes {
     M(38),
     L(40);
 
-    int size;
+    private int size;
 
 
     public String getDescription() {

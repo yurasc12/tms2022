@@ -15,14 +15,16 @@ public class Pants extends Clothes implements MensClothing, WomensClothing {
     }
 
     @Override
-    public void dressAMen() {
+    public MensClothing dressMen() {
         System.out.println("На вас надеты штаны. Стоимость штанов: " + getPrice() + " Размер: " +
                 getSize() + " Цвет штанов: " + getColor());
+        return null;
     }
 
     @Override
-    public void dressAWoman() {
+    public WomensClothing dressWoman() {
         System.out.println("На вас надеты штаны. Стоимость штанов: " + getPrice() + " Размер: " +
                 getSize() + " Цвет штанов: " + getColor());
+        return null;
     }
 }

@@ -25,8 +25,8 @@ public class MainClothes {
         }
 
         Studio studio = new Studio();
-        studio.dressedAWomen(clothes);
-        studio.dressedAMen(clothes);
+        studio.dressedWomen(clothes);
+        studio.dressedMen(clothes);
 
     }
 }
