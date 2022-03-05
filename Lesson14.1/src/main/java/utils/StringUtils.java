@@ -1,13 +1,18 @@
 package utils;
 
-import org.apache.commons.lang3.StringUtils;
+import lombok.experimental.UtilityClass;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static utils.Constants.REGEXLOWERLATIN;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+import static utils.Constants.PATERN;
 
-public class MyUtilsString {
+@UtilityClass
+public class StringUtils {
     /**
      * По строкам дополнительная!
      * 1) Даны строки разной длины c четным числом символов(казаки, просмотреть и так далее),
@@ -15,8 +20,8 @@ public class MyUtilsString {
      * Например, если дана строка "string"  результат будет "ri", для строки "code" результат "od",  для "Practice" результат "ct".
      */
 
-    public String getMidlChar(String word) {
-        if (StringUtils.isNotEmpty(word) && word.length() % 2 == 0) {
+    public static String getMidlChar(String word) {
+        if (isNotEmpty(word) && word.length() % 2 == 0) {
             if (word.length() == 2) {
                 return word;
             } else {
@@ -34,13 +39,15 @@ public class MyUtilsString {
 //     * cccab
 // Дана строка "Versions: Java  5, Java 6, Java   7, Java 8, Java 12."  Найти все подстроки "Java X", где X - число и распечатать их.
 
-    public void printWord(String str, String regex) {
+    public static List<String> getWord(String str, String regex) {
         // String regex = "Java\\s+\\d{1,3}";
         Pattern compile = Pattern.compile(regex);
         Matcher matcher = compile.matcher(str);
+        List<String> words = new ArrayList<>();
         while (matcher.find()) {
-            System.out.println(matcher.group());
+            words.add(matcher.group());
         }
+        return words;
     }
 
 
@@ -56,9 +63,9 @@ public class MyUtilsString {
      * 3) [] - группировки символов
      * 4) +,* - квантификаторы
      */
-
-    public void getCountWord(String str) {
-        String regex = "[[^a-zA-Z]\\s]";
+// пока не  придумал
+    public static void getCountWord(String str) {
+        String regex = "[[^a-zA-Z]\\s+]";
         String[] words = str.split(regex);
         System.out.println(str.split(regex).length);
     }
@@ -68,12 +75,35 @@ public class MyUtilsString {
      * - Строка должна содержать только маленькие латинские буквы и цифры 1 или 5 без знака подчеркивания.
      * - Длина строки должна быть от 4 до 20 символов.
      */
-    public boolean validate(String str, int rangeFrom, int rangeTo) {
-        if (str.length() >= rangeFrom && str.length() <= rangeTo) {
-            Pattern pattern = Pattern.compile(REGEXLOWERLATIN);
-            Matcher matcher = pattern.matcher(str);
-            return matcher.matches();
+    public static boolean validate(String str) {
+        Matcher matcher = PATERN.matcher(str);
+        return matcher.matches();
+    }
+
+    public static boolean checkWordPalindrome(String word) {
+        if (isNotEmpty(word) && word.length() > 1) { // предлоги и союзы не палиндромы
+            StringBuilder stringBuilder = new StringBuilder(word.toLowerCase(Locale.ROOT));
+            String wordTemp = stringBuilder.reverse().toString();
+            return word.toLowerCase(Locale.ROOT).equals(wordTemp);
+        } else {
+            return false;
+        }
+    }
+
+    public static int checkSentence(String sentence) {
+        String[] wordArray = sentence.trim().split("[,; ]+");
+        return wordArray.length;
+    }
+
+    public static boolean checkSentencePalindrome(String sentence) {
+        String[] wordArray = sentence.trim().split("[,; ]+");
+        for (String s : wordArray) {
+            if (checkWordPalindrome(s)) {
+                return true;
+            }
         }
         return false;
     }
+
+
 }
