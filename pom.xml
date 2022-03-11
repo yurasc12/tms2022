@@ -28,6 +28,8 @@
         <module>Lesson13</module>
         <module>Lesson14.1</module>
         <module>Lesson14.2</module>
+        <module>Lesson15</module>
+        <module>Lesson16</module>
     </modules>
 
     <dependencies>
@@ -57,5 +59,17 @@
             <artifactId>jackson-annotations</artifactId>
             <version>2.12.3</version>
         </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 </project>
