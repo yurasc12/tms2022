@@ -2,8 +2,6 @@ package models;
 
 import lombok.Getter;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Scanner;
 
 @Getter
@@ -11,16 +9,16 @@ public class InputData {
     private static final Scanner scanner = new Scanner(System.in);
     private String nameProduct;
     private Integer idProduct;
-    private BigDecimal priceProduct;
+    private Double priceProduct;
 
     public void getData() {
-        idProduct = getValueInt();
-        nameProduct = getValueString();
-        priceProduct = getValueBigDe();
+        idProduct = getIdProduct();
+        nameProduct = getNameProduct();
+        priceProduct = getPriceProduct();
     }
 
 
-    private static String getValueString() {
+    public String getNameProduct() {
         String value = "";
         do {
             System.out.print("Название товара:");
@@ -34,7 +32,7 @@ public class InputData {
         return value;
     }
 
-    private static int getValueInt() {
+    public int getIdProduct() {
         int value = 0;
         do {
             System.out.print("ID товара:");
@@ -48,16 +46,16 @@ public class InputData {
         return value;
     }
 
-    private static BigDecimal getValueBigDe() {
-        BigDecimal value = new BigDecimal(BigInteger.ZERO);
+    public Double getPriceProduct() {
+        double value = 0.00;
         do {
-            System.out.print(" цена товара :");
-            if (scanner.hasNextBigDecimal()) {
-                value = (BigDecimal) scanner.nextBigDecimal();
+            System.out.print("цена товара :");
+            if (scanner.hasNextDouble()) {
+                value = scanner.nextDouble();
             } else {
                 scanner.next();
             }
-        } while (!value.equals(BigDecimal.ZERO));
+        } while (value == 0.00);
 
         return value;
     }

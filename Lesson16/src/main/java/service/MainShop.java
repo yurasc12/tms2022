@@ -1,15 +1,13 @@
 package service;
 
-import models.CaseMenu;
-import models.InputData;
-import models.Product;
-import models.Shop;
+import models.*;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
-import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -43,18 +41,13 @@ public class MainShop {
     public static void main(String[] args) {
 
         List<Product> products = new ArrayList<>();
-        Product product = new Product(1, "мясо", new BigDecimal("20.5"));
+        Product product = new Product(1, "мясо", 20.5);
         products.add(product);
-        Product product1 = new Product(1, "гречка", new BigDecimal("5.5"));
+        Product product1 = new Product(2, "гречка", 5.5);
         products.add(product1);
-
-        Shop shop = new Shop(products);
-
-        /*List<Product> sortedList = listProducts.stream()
-                .sorted(Comparator.comparingInt(Product::getPrice)).toList();
-
-        sortedList.forEach(System.out::println);*/
-
+        Product product3 = new Product(3, "рис", 105.5);
+        products.add(product3);
+        IShop shop = new Shop(products);
 
         CaseMenu caseMenu = new CaseMenu();
         InputData inputData = new InputData();
@@ -63,7 +56,9 @@ public class MainShop {
             switch (key) {
                 case 1:
                     inputData.getData();
-                    if (shop.appendProduct(inputData.getIdProduct(), inputData.getNameProduct(), inputData.getPriceProduct())) {
+                    Product newProduct = new Product(inputData.getIdProduct(), inputData.getNameProduct(), inputData.getPriceProduct());
+                    System.out.println(inputData.getPriceProduct());
+                    if (shop.appendProduct(newProduct)) {
                         System.out.println("товар добавлен");
                     } else {
                         System.out.println("товар уже существует");
@@ -71,21 +66,37 @@ public class MainShop {
                     break;
                 case 2:
                     inputData.getData();
-                    if (shop.removeProduct(inputData.getIdProduct(), inputData.getNameProduct(), inputData.getPriceProduct())) {
+                    Product newProductRemove = new Product(inputData.getIdProduct(), inputData.getNameProduct(), inputData.getPriceProduct());
+                    if (shop.removeProduct(newProductRemove)) {
                         System.out.println("товар удален");
                     } else {
                         System.out.println("повторите операцию");
                     }
-
                     break;
                 case 3:
                     int keySub = caseMenu.startSubMenu();
+                    List<Product> listProducts = shop.getListProducts();
+                    List<Product> sortedList;
                     switch (keySub) {
+                        case 1:
+                            sortedList = listProducts.stream()
+                                    .sorted(Comparator.comparingDouble(o -> o.getPrice()))
+                                    .collect(Collectors.toList());
+                            break;
+                        case 2:
+                            sortedList = listProducts.stream()
+                                    .sorted(Comparator.comparingDouble(Product::getPrice).reversed())
+                                    .collect(Collectors.toList());
+                            break;
+                        case 3:
+                            sortedList = listProducts;
+                            break;
+                        default:
+                            throw new IllegalStateException("Unexpected value: " + keySub);
                     }
 
-                    List<Product> listProducts = shop.getListProducts();
-                    for (Product listProduct : listProducts) {
-                        System.out.println("Наименование : " + listProduct.getName() + " " + listProduct.getPrice() + " руб.");
+                    for (Product product2 : sortedList) {
+                        System.out.println("Наименование : " + product2.getName() + " " + product2.getPrice() + " руб.");
                     }
                     break;
                 case 5:
@@ -99,7 +110,7 @@ public class MainShop {
 
     }
 
-    public static void endWork(String filename, Shop shop) {
+    public static void endWork(String filename, IShop shop) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
             oos.writeObject(shop);
             System.out.println("Запись произошла");

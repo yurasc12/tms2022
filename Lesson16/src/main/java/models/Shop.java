@@ -1,7 +1,6 @@
 package models;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
 
 public class Shop implements IShop, Serializable {
@@ -12,26 +11,22 @@ public class Shop implements IShop, Serializable {
     }
 
     @Override
-    public boolean appendProduct(int id, String name, BigDecimal price) {
-        if (findElement(id, name, price) == -1) {
-            products.add(new Product(id, name, price));
+    public boolean appendProduct(Product product) {
+        if (findElement(product)) {
+            products.add(product);
             return true;
         } else {
             return false;
         }
-
     }
 
-    private int findElement(int id, String name, BigDecimal price) {
-        int index = -1;
-        int i = 0;
+    private boolean findElement(Product newProduct) {
         for (Product product : products) {
-            if (product.getId() == id && product.getName().equals(name) && product.getPrice().equals(price)) {
-                return i;
+            if (product.equals(newProduct)) {
+                return true;
             }
-            i++;
         }
-        return index;
+        return false;
     }
 
     @Override
@@ -40,14 +35,12 @@ public class Shop implements IShop, Serializable {
     }
 
     @Override
-    public boolean removeProduct(int id, String name, BigDecimal price) {
-
-        int index = findElement(id, name, price);
-        if (index == -1) {
-            return false;
-        } else {
-            products.remove(index);
+    public boolean removeProduct(Product product) {
+        if (findElement(product)) {
+            products.remove(product);
             return true;
+        } else {
+            return false;
         }
     }
 
