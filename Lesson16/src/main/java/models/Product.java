@@ -5,17 +5,16 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Objects;
 
 @Getter
 @Setter
 @AllArgsConstructor
-
 public class Product implements Serializable {
     private int id;
     private String name;
-    private BigDecimal price;
+    private Double price;
+
 
     @Override
     public boolean equals(Object o) {

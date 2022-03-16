@@ -7,6 +7,7 @@ public class CaseMenu {
 
 
     public void printMenu() {
+        System.out.println("Введите номер меню: ");
         System.out.println("1. Поступление товара;");
         System.out.println("2. Удаление товара;");
         System.out.println("3. Вывод спика товаров;");
@@ -15,13 +16,10 @@ public class CaseMenu {
     }
 
     public int start() {
-
         int key;
         do {
             printMenu();
-            System.out.print("Введите номер меню: ");
             key = scanner.nextInt();
-
         } while (key < 1 || key > 5);
         return key;
     }
@@ -34,13 +32,11 @@ public class CaseMenu {
     }
 
     public int startSubMenu() {
-
         int key;
         do {
             printSubMenu();
             System.out.print("Введите номер меню: ");
             key = scanner.nextInt();
-
         } while (key < 1 || key > 3);
         return key;
     }
