@@ -4,10 +4,7 @@ import models.Car;
 import models.Person;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class MainStream {
@@ -21,7 +18,9 @@ public class MainStream {
         System.out.println(countElemetsList());
 
         List<String> strings = Arrays.asList("john", "arya", "sansa");
-        strings.stream().map(s -> s.substring(0, 1).toUpperCase() + s.substring(1)).forEach(System.out::println);
+        strings.stream()
+                .map(s -> s.substring(0, 1).toUpperCase() + s.substring(1))
+                .forEach(System.out::println);
         printNotEmptyNumberCar();
         printSurname();
         printCountStaff();
@@ -64,7 +63,8 @@ public class MainStream {
                 new Car("AI3838PP", 2017));
         cars.stream()
                 .filter(p -> StringUtils.isNotEmpty(p.getNumber()))
-                .filter(p -> p.getYear() > 2010).forEach(System.out::println);
+                .filter(p -> p.getYear() > 2010)
+                .forEach(System.out::println);
     }
 
     // вывод фамилий нач. с буквы Д
@@ -73,7 +73,8 @@ public class MainStream {
                 new Person("Петя", "Денисов"),
                 new Person("Иван", "Иванов"),
                 new Person("Федор", "Достоевский"));
-        persons.stream().filter(p -> p.getSurname().substring(0, 1).equals("Д"))
+        persons.stream()
+                .filter(p -> p.getSurname().substring(0, 1).equals("Д"))
                 .forEach(p -> System.out.println(p.getSurname()));
     }
 
@@ -84,7 +85,10 @@ public class MainStream {
                 new Person("Иван", "Иванов"),
                 new Person("Федор", "Достоевский"));
 
-        List<String> transform = persons.stream()
+
+        Map<String, Long> result = persons.stream().collect(Collectors.groupingBy(p -> p.getSurname().substring(0, 1), Collectors.counting()));
+        System.out.println(result);
+        /*List<String> transform = persons.stream()
                 .map(p -> p.getSurname().substring(0, 1))
                 .distinct()
                 .collect(Collectors.toList());
@@ -93,7 +97,7 @@ public class MainStream {
                     .filter(p -> p.getSurname().substring(0, 1).equals(s))
                     .count();
             System.out.println(s + "- " + count);
-        }
+        }*/
     }
 
 }
